@@ -27,8 +27,12 @@ public class UsuarioServiceImplement implements UsuarioService {
 	}
 
 	/**
-	 * Equivale a: INSERT INTO USUARIO... 
-	 * o UPDATE ...
+	 * Equivale a: INSERT INTO nombre_tabla (listaDeCampos) 
+	 * o UPDATE nombre_tabla
+	 *      SET campo1 = valor1,
+	 *          campoN = valorN,
+	 *          ...
+	 *   WHERE condiciones       
 	 */
 	@Override
 	public Usuario guardarUsuario(Usuario usuario) {
@@ -36,7 +40,7 @@ public class UsuarioServiceImplement implements UsuarioService {
 	}
 
 	/**
-	 * Equivale a: DELETE
+	 * Equivale a: DELETE FROM nombre_tabla WHERE condiciones
 	 */
 	@Override
 	public void eliminarUsuario(Long id) {
