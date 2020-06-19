@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Lista Usuarios</title>
+<link href="../../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+	<a class="btn btn-info" href="/usuario/nuevo">Nuevo Usuario</a>	
+	<hr>
+     <div class="panel panel-info">
+       	<div class="panel-heading"><h3>Lista de Usuarios</h3></div>
+       	<table class="table table-striped">
+       	 	<thead>
+       	 	    <tr>
+       	 	    	<th>Id</th>
+       	 	    	<th>Nombre</th>
+       	 	    	<th>Apellido</th>
+       	 	    	<th>Nombre de Usuario</th>
+       	 	    	<th>Tipo</th>
+       	 	    </tr>
+       	 	  </thead>
+       	 	  <tbody>
+       	 	  		<tr data-th-each="usuario : ${usuarios}">
+       	 	  		   <td data-th-text="${usuario.id}"></td>
+       	 	  		   <td data-th-text="${usuario.nombreReal}"></td>
+       	 	  		   <td data-th-text="${usuario.apellidoReal}"></td>
+       	 	  		   <td data-th-text="${usuario.nombreUsuario}"></td>
+       	 	  		   <td data-th-text="${usuario.tipoUsuario}"></td>
+       	 	  		   
+       	 	  		   
+       	 	  		
+       	 	  		</tr>
+       	 	  </tbody>
+       	 	  
+       	</table>
+     </div>
+
+</body>
+</html>

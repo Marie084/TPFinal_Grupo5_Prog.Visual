@@ -16,7 +16,7 @@ import ar.edu.unju.fi.testeos.model.Usuario;
 public class UsuarioServiceImplement implements UsuarioService {
 
 	@Autowired
-	private UsuarioRepository usuarioRepository; // intanciamos al repository.
+	private UsuarioRepository usuarioRepository; // instanciamos al repository.
 
 	/**
 	 * Equivale a: SELECT * FROM USUARIO WHERE ID=":ID"
