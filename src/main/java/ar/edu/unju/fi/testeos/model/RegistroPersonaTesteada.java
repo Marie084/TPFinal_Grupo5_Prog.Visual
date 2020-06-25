@@ -5,14 +5,21 @@ import javax.persistence.*;
 @Entity
 @Table(name = "registro_persona_testeada")
 public class RegistroPersonaTesteada {
+	
+	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="Reg_Per_Testeada_ID")
 	private Long id;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private RegistroTesteo registroTesteo;
-	@ManyToOne
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="Persona_Testeada_ID")
 	private PersonaTesteada personaTesteada;
 
+	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
+	
 	/**
 	 * Constructor sin parametros
 	 */
@@ -33,6 +40,8 @@ public class RegistroPersonaTesteada {
 		this.registroTesteo = registroTesteo;
 		this.personaTesteada = personaTesteada;
 	}
+	
+	//=========================GET/SET==============================
 
 	/**
 	 * @return the id
@@ -75,7 +84,9 @@ public class RegistroPersonaTesteada {
 	public void setPersonaTesteada(PersonaTesteada personaTesteada) {
 		this.personaTesteada = personaTesteada;
 	}
-
+	
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CDA METODO==============================
+    
 	@Override
 	public String toString() {
 		return "RegistroPersonaTesteada [id=" + id + ", registroTesteo=" + registroTesteo + ", personaTesteada="

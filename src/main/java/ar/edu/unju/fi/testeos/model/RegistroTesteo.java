@@ -7,16 +7,23 @@ import javax.persistence.*;
 @Entity
 @Table(name = "registro_testeo")
 public class RegistroTesteo {
+	
+	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="Registro_Testeo_ID")
 	private Long id;
 	@Column(name = "fecha_hora")
 	private LocalDate fechaHora;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="Usuario_ID")
 	private Usuario usuario;
-	@ManyToOne
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="Unidad_Habitacional_ID")
 	private UnidadHabitacional unidadHabitacional;
 
+	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 	/**
 	 * Constructor sin parametros.
 	 */
@@ -39,7 +46,9 @@ public class RegistroTesteo {
 		this.usuario = usuario;
 		this.unidadHabitacional = unidadHabitacional;
 	}
-
+	
+	
+	//=========================GET/SET===========================================
 	/**
 	 * @return the id
 	 */
@@ -95,7 +104,9 @@ public class RegistroTesteo {
 	public void setUnidadHabitacional(UnidadHabitacional unidadHabitacional) {
 		this.unidadHabitacional = unidadHabitacional;
 	}
-
+	
+	
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CDA METODO==============================
 	@Override
 	public String toString() {
 		return "RegistroTesteo [id=" + id + ", fechaHora=" + fechaHora + ", usuario=" + usuario

@@ -5,17 +5,32 @@ import javax.persistence.*;
 @Entity
 @Table(name = "persona_testeada")
 public class PersonaTesteada {
+	
+	//============================DEFINICION DE VARIABLES MIEMBROS==================================
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="Per_Testeada_ID")
 	private Long id;
-	@Column(name = "documento")
+	
+	@Column(name = "documento", unique = true,length = 200, nullable = true)
 	private String documento;
-	@Column(name = "apellido")
+	
+	@Column(name = "apellido", nullable = true)
 	private String apellido;
-	@Column(name = "nombre")
+	
+	@Column(name = "nombre", nullable = true)
 	private String nombre;
-	@Column(name = "resultado_testeo")
+	
+	@Column(name = "Resultado_Testeo", nullable = true)
 	private Boolean resultadoTesteo;
+	
+	//NO SE PUEDE REALIZAR EL GET O SET RAZONES NO CONOCIDAS
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name="Reg_Per_Testeada_ID") //dentro pudo agregar  mappedby="personaTesteada": solo me gusta acceder a las marcas  private set<regPERSONATesteada> PERSONASregistradastesteadas= new hashset<>()
+	private RegistroPersonaTesteada registroPersonaTesteada;
+	
+	//=======================DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 
 	/**
 	 * Constructor sin parametros
@@ -42,6 +57,8 @@ public class PersonaTesteada {
 		this.nombre = nombre;
 		this.resultadoTesteo = resultadoTesteo;
 	}
+	
+	//====================================GET/SET===========================================
 
 	/**
 	 * @return the id
@@ -112,6 +129,8 @@ public class PersonaTesteada {
 	public void setResultadoTesteo(Boolean resultadoTesteo) {
 		this.resultadoTesteo = resultadoTesteo;
 	}
+	
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CDA METODO==============================
 
 	@Override
 	public String toString() {

@@ -2,26 +2,45 @@ package ar.edu.unju.fi.testeos.model;
 
 import javax.persistence.*;
 
+import org.hibernate.type.TrueFalseType;
+
 import ar.edu.unju.fi.enumerado.TipoUsuarioEnumerado;
 
 @Entity
 @Table(name = "usuario")
 public class Usuario {
+	
+	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="Usuario_ID")
 	private Long id;
-	@Column(name = "nombre_usuario")
+	
+	@Column(name = "Nombre_Usuario", unique = true, length = 150, nullable = true)
 	private String nombreUsuario;
-	@Column(name = "password")
+	
+	@Column(name = "Password")
 	private String password;
-	@Column(name = "nombre_real")
+	
+	@Column(name = "Nombre_Real", unique = true, nullable = true)
 	private String nombreReal;
-	@Column(name = "apellido_real")
+	
+	@Column(name = "Apellido_Real", nullable = true)
 	private String apellidoReal;
+	
 	@Enumerated(EnumType.STRING) // Toma el valor del enumerado y lo guarda en la columna de la tabla.
-	@Column(name = "tipo_usuario")
+	@Column(name = "Tipo_Usuario")
 	private TipoUsuarioEnumerado tipoUsuario;
+	
+	//AGREGE SU SET Y GET NOCE SI SEA CORRECTO ??????
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name="Registro_Testeo_ID")
+	private RegistroTesteo registroTesteo;
 
+	
+	
+
+	//======================DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 	/**
 	 * Constructor sin parametros.
 	 */
@@ -50,6 +69,7 @@ public class Usuario {
 		this.tipoUsuario = tipoUsuario;
 	}
 
+	//======================================GET/SET===========================================
 	/**
 	 * @return the id
 	 */
@@ -133,7 +153,22 @@ public class Usuario {
 	public void setTipoUsuario(TipoUsuarioEnumerado tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+	
+	/**
+	 * @return the registroTesteo
+	 */
+	public RegistroTesteo getRegistroTesteo() {
+		return registroTesteo;
+	}
 
+	/**
+	 * @param registroTesteo the registroTesteo to set
+	 */
+	public void setRegistroTesteo(RegistroTesteo registroTesteo) {
+		this.registroTesteo = registroTesteo;
+	}
+
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CADA METODO==============================
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombreUsuario=" + nombreUsuario + ", password=" + password + ", nombreReal="

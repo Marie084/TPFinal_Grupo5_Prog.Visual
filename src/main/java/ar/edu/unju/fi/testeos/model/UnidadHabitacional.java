@@ -5,15 +5,23 @@ import javax.persistence.*;
 @Entity
 @Table(name = "unidad_habitacional")
 public class UnidadHabitacional {
-
+    
+	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="Unidad_Habitacional_ID")
 	private Long id;
 	@Column(name = "direccion")
 	private String direccion;
-	@ManyToOne // Indica la relacion muchos a uno entre unidadHabitacional y barrio.
+	@ManyToOne(fetch = FetchType.LAZY) // Indica la relacion muchos a uno entre unidadHabitacional y barrio.
+	@JoinColumn(name="Barrio_ID")
 	private Barrio barrio;
-
+	
+	@OneToMany(fetch = FetchType.LAZY) 
+	@JoinColumn(name="Registro_Testeo_ID")
+	private RegistroTesteo registroTesteo;
+    
+	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 	/**
 	 * Constructor con parametros.
 	 * 
@@ -34,6 +42,7 @@ public class UnidadHabitacional {
 	public UnidadHabitacional() {
 	}
 
+	//======================================GET/SET===========================================
 	/**
 	 * @return the id
 	 */
@@ -76,6 +85,7 @@ public class UnidadHabitacional {
 		this.barrio = barrio;
 	}
 
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CADA METODO==============================
 	@Override
 	public String toString() {
 		return "UnidadHabitacional [id=" + id + ", direccion=" + direccion + ", barrio=" + barrio + "]";

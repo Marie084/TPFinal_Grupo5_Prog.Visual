@@ -2,18 +2,24 @@ package ar.edu.unju.fi.testeos.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /*
- * @Entity 
+ * @Entity me dice q esta clase se va ah comportar como entidad
  * @Table es la relacion entre el nombre de la tabla de la bd y la entidad.
  */
 @Entity
-@Table(name = "barrio")
+@Table(name = "Barrio")
 public class Barrio {
+	
+
+	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	/*
 	 * @Id indica que es la clave primaria de la tabla barrio.
 	 * 
@@ -23,10 +29,19 @@ public class Barrio {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="Barrio_ID")
 	private Long id;
-	@Column(name = "nombre")
+	
+	@Column(name = "nombre",length = 150, nullable = true)
 	private String nombre;
+	
+	//ACA SI SE PUDO PONER LOS SET Y GET ?????????????????????
+	@OneToMany(fetch = FetchType.LAZY) 
+	@JoinColumn(name="Unidad_Habitacional")
+	private UnidadHabitacional unidadHabitacional;
+	
 
+	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 	/**
 	 * Constructor con parametros.
 	 * 
@@ -44,6 +59,9 @@ public class Barrio {
 	 */
 	public Barrio() {
 	}
+	
+	
+	//=========================GET/SET==============================
 
 	/**
 	 * @return the id
@@ -72,7 +90,22 @@ public class Barrio {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	/**
+	 * @return the unidadHabitacional
+	 */
+	public UnidadHabitacional getUnidadHabitacional() {
+		return unidadHabitacional;
+	}
 
+	/**
+	 * @param unidadHabitacional the unidadHabitacional to set
+	 */
+	public void setUnidadHabitacional(UnidadHabitacional unidadHabitacional) {
+		this.unidadHabitacional = unidadHabitacional;
+	}
+	
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CADA METODO==============================
 	@Override
 	public String toString() {
 		return "Barrio [id=" + id + ", nombre=" + nombre + "]";
