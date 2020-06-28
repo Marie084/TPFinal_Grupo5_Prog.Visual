@@ -15,11 +15,12 @@ public class RegistroTesteo {
 	private Long id;
 	@Column(name = "fecha_hora")
 	private LocalDate fechaHora;
-	@ManyToOne(fetch = FetchType.LAZY)
+	
+	@ManyToOne(optional = false)
 	@JoinColumn(name="Usuario_ID")
 	private Usuario usuario;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(optional = false)
 	@JoinColumn(name="Unidad_Habitacional_ID")
 	private UnidadHabitacional unidadHabitacional;
 
@@ -39,7 +40,7 @@ public class RegistroTesteo {
 	 * @param usuario
 	 * @param unidadHabitacional
 	 */
-	public RegistroTesteo(Long id, LocalDate fechaHora, Usuario usuario, UnidadHabitacional unidadHabitacional) {
+	public RegistroTesteo(Long id, LocalDate fechaHora, Usuario usuario, UnidadHabitacional unidadHabitacional) {//
 		super();
 		this.id = id;
 		this.fechaHora = fechaHora;
@@ -77,19 +78,19 @@ public class RegistroTesteo {
 		this.fechaHora = fechaHora;
 	}
 
-	/**
+	/*/**
 	 * @return the usuario
-	 */
+	 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
 	/**
 	 * @param usuario the usuario to set
-	 */
+	 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
+	}*/
 
 	/**
 	 * @return the unidadHabitacional
@@ -109,7 +110,7 @@ public class RegistroTesteo {
 	//=========================VERIFICACION DE COMO ESTA ANDANDO CDA METODO==============================
 	@Override
 	public String toString() {
-		return "RegistroTesteo [id=" + id + ", fechaHora=" + fechaHora + ", usuario=" + usuario
+		return "RegistroTesteo [id=" + id + ", fechaHora=" + fechaHora //+ ", usuario=" + usuario
 				+ ", unidadHabitacional=" + unidadHabitacional + "]";
 	}
 

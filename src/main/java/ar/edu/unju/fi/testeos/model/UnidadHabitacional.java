@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.testeos.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,14 +16,17 @@ public class UnidadHabitacional {
 	private Long id;
 	@Column(name = "direccion")
 	private String direccion;
-	@ManyToOne(fetch = FetchType.LAZY) // Indica la relacion muchos a uno entre unidadHabitacional y barrio.
+	
+	@ManyToOne(optional = false)  //Indica la relacion muchos a uno entre unidadHabitacional y barrio.
 	@JoinColumn(name="Barrio_ID")
 	private Barrio barrio;
 	
-	@OneToMany(fetch = FetchType.LAZY) 
+	@OneToMany(mappedBy = "unidadHabitacional",fetch = FetchType.EAGER) 
 	@JoinColumn(name="Registro_Testeo_ID")
-	private RegistroTesteo registroTesteo;
+	private Set<RegistroTesteo> registroTesteo= new HashSet<>();
     
+	
+
 	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 	/**
 	 * Constructor con parametros.
@@ -83,6 +89,20 @@ public class UnidadHabitacional {
 	 */
 	public void setBarrio(Barrio barrio) {
 		this.barrio = barrio;
+	}
+	
+	/**
+	 * @return the registroTesteo
+	 */
+	public Set<RegistroTesteo> getRegistroTesteo() {
+		return registroTesteo;
+	}
+
+	/**
+	 * @param registroTesteo the registroTesteo to set
+	 */
+	public void setRegistroTesteo(Set<RegistroTesteo> registroTesteo) {
+		this.registroTesteo = registroTesteo;
 	}
 
 	//=========================VERIFICACION DE COMO ESTA ANDANDO CADA METODO==============================

@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.testeos.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -25,12 +28,14 @@ public class PersonaTesteada {
 	@Column(name = "Resultado_Testeo", nullable = true)
 	private Boolean resultadoTesteo;
 	
-	//NO SE PUEDE REALIZAR EL GET O SET RAZONES NO CONOCIDAS
-	@OneToMany(fetch = FetchType.LAZY)
+	//mappedBy ="personaTesteadas" : me permite
+	@OneToMany(mappedBy ="personaTesteadas" , fetch = FetchType.LAZY)
 	@JoinColumn(name="Reg_Per_Testeada_ID") //dentro pudo agregar  mappedby="personaTesteada": solo me gusta acceder a las marcas  private set<regPERSONATesteada> PERSONASregistradastesteadas= new hashset<>()
-	private RegistroPersonaTesteada registroPersonaTesteada;
+	private Set<RegistroPersonaTesteada> registroPersonaTesteada = new HashSet<>();
 	
 	//=======================DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
+
+	
 
 	/**
 	 * Constructor sin parametros
@@ -128,6 +133,20 @@ public class PersonaTesteada {
 	 */
 	public void setResultadoTesteo(Boolean resultadoTesteo) {
 		this.resultadoTesteo = resultadoTesteo;
+	}
+	
+	/**
+	 * @return the registroPersonaTesteada
+	 */
+	public Set<RegistroPersonaTesteada> getRegistroPersonaTesteada() {
+		return registroPersonaTesteada;
+	}
+
+	/**
+	 * @param registroPersonaTesteada the registroPersonaTesteada to set
+	 */
+	public void setRegistroPersonaTesteada(Set<RegistroPersonaTesteada> registroPersonaTesteada) {
+		this.registroPersonaTesteada = registroPersonaTesteada;
 	}
 	
 	//=========================VERIFICACION DE COMO ESTA ANDANDO CDA METODO==============================

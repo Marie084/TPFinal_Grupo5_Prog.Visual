@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.testeos.model;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -14,9 +15,10 @@ public class RegistroPersonaTesteada {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private RegistroTesteo registroTesteo;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(optional = false)//,fetch = FetchType.EAGER
 	@JoinColumn(name="Persona_Testeada_ID")
-	private PersonaTesteada personaTesteada;
+	private PersonaTesteada personaTesteadas;                                //<PersonaTesteada> personaTesteada =new HashSet<>();
+	
 
 	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 	
@@ -38,7 +40,7 @@ public class RegistroPersonaTesteada {
 		super();
 		this.id = id;
 		this.registroTesteo = registroTesteo;
-		this.personaTesteada = personaTesteada;
+		//this.personaTesteada = personaTesteada;
 	}
 	
 	//=========================GET/SET==============================
@@ -72,17 +74,17 @@ public class RegistroPersonaTesteada {
 	}
 
 	/**
-	 * @return the personaTesteada
+	 * @return the personaTesteadas
 	 */
-	public PersonaTesteada getPersonaTesteada() {
-		return personaTesteada;
+	public PersonaTesteada getPersonaTesteadas() {
+		return personaTesteadas;
 	}
 
 	/**
-	 * @param personaTesteada the personaTesteada to set
+	 * @param personaTesteadas the personaTesteadas to set
 	 */
-	public void setPersonaTesteada(PersonaTesteada personaTesteada) {
-		this.personaTesteada = personaTesteada;
+	public void setPersonaTesteadas(PersonaTesteada personaTesteadas) {
+		this.personaTesteadas = personaTesteadas;
 	}
 	
 	//=========================VERIFICACION DE COMO ESTA ANDANDO CDA METODO==============================
@@ -90,7 +92,9 @@ public class RegistroPersonaTesteada {
 	@Override
 	public String toString() {
 		return "RegistroPersonaTesteada [id=" + id + ", registroTesteo=" + registroTesteo + ", personaTesteada="
-				+ personaTesteada + "]";
+				/*+ personaTesteada*/ + "]";
 	}
+
+	
 
 }

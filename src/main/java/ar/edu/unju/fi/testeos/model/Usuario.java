@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.testeos.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 import org.hibernate.type.TrueFalseType;
@@ -33,9 +36,9 @@ public class Usuario {
 	private TipoUsuarioEnumerado tipoUsuario;
 	
 	//AGREGE SU SET Y GET NOCE SI SEA CORRECTO ??????
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
 	@JoinColumn(name="Registro_Testeo_ID")
-	private RegistroTesteo registroTesteo;
+	private Set<RegistroTesteo> registroTesteo = new HashSet<>();
 
 	
 	
@@ -154,17 +157,19 @@ public class Usuario {
 		this.tipoUsuario = tipoUsuario;
 	}
 	
+	
+
 	/**
 	 * @return the registroTesteo
 	 */
-	public RegistroTesteo getRegistroTesteo() {
+	public Set<RegistroTesteo> getRegistroTesteo() {
 		return registroTesteo;
 	}
 
 	/**
 	 * @param registroTesteo the registroTesteo to set
 	 */
-	public void setRegistroTesteo(RegistroTesteo registroTesteo) {
+	public void setRegistroTesteo(Set<RegistroTesteo> registroTesteo) {
 		this.registroTesteo = registroTesteo;
 	}
 

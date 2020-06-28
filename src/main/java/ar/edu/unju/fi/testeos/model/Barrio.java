@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.testeos.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,10 +38,9 @@ public class Barrio {
 	@Column(name = "nombre",length = 150, nullable = true)
 	private String nombre;
 	
-	//ACA SI SE PUDO PONER LOS SET Y GET ?????????????????????
-	@OneToMany(fetch = FetchType.LAZY) 
+	@OneToMany(mappedBy = "barrio", fetch = FetchType.EAGER) 
 	@JoinColumn(name="Unidad_Habitacional")
-	private UnidadHabitacional unidadHabitacional;
+	private Set<UnidadHabitacional> unidadHabitacional= new HashSet<>();
 	
 
 	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
@@ -91,20 +93,22 @@ public class Barrio {
 		this.nombre = nombre;
 	}
 	
+	
+	
 	/**
 	 * @return the unidadHabitacional
 	 */
-	public UnidadHabitacional getUnidadHabitacional() {
+	public Set<UnidadHabitacional> getUnidadHabitacional() {
 		return unidadHabitacional;
 	}
 
 	/**
 	 * @param unidadHabitacional the unidadHabitacional to set
 	 */
-	public void setUnidadHabitacional(UnidadHabitacional unidadHabitacional) {
+	public void setUnidadHabitacional(Set<UnidadHabitacional> unidadHabitacional) {
 		this.unidadHabitacional = unidadHabitacional;
 	}
-	
+
 	//=========================VERIFICACION DE COMO ESTA ANDANDO CADA METODO==============================
 	@Override
 	public String toString() {
