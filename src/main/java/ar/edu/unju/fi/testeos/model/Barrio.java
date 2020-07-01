@@ -32,14 +32,14 @@ public class Barrio {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Barrio_ID")
+	@Column(name="barrio_ID")
 	private Long id;
 	
 	@Column(name = "nombre",length = 150, nullable = true)
 	private String nombre;
 	
 	@OneToMany(mappedBy = "barrio", fetch = FetchType.EAGER) 
-	@JoinColumn(name="Unidad_Habitacional")
+	@Column(name="unidad_habitacional_ID")
 	private Set<UnidadHabitacional> unidadHabitacional= new HashSet<>();
 	
 

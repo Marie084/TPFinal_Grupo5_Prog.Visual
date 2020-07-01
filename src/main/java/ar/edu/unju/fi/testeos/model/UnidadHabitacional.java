@@ -12,17 +12,17 @@ public class UnidadHabitacional {
 	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Unidad_Habitacional_ID")
+	@Column(name="unidad_habitacional_ID")
 	private Long id;
 	@Column(name = "direccion")
 	private String direccion;
 	
 	@ManyToOne(optional = false)  //Indica la relacion muchos a uno entre unidadHabitacional y barrio.
-	@JoinColumn(name="Barrio_ID")
+	@Column(name="barrio_ID")
 	private Barrio barrio;
 	
 	@OneToMany(mappedBy = "unidadHabitacional",fetch = FetchType.EAGER) 
-	@JoinColumn(name="Registro_Testeo_ID")
+	@Column(name="registro_testeo_ID")
 	private Set<RegistroTesteo> registroTesteo= new HashSet<>();
     
 	

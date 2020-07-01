@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "registro_testeo")
 public class RegistroTesteo {
@@ -11,17 +13,18 @@ public class RegistroTesteo {
 	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Registro_Testeo_ID")
+	@Column(name="registro_testeo_ID")
 	private Long id;
 	@Column(name = "fecha_hora")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate fechaHora;
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name="Usuario_ID")
+	@Column(name="usuario_ID")
 	private Usuario usuario;
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name="Unidad_Habitacional_ID")
+	@Column(name="unidad_habitacional_ID")
 	private UnidadHabitacional unidadHabitacional;
 
 	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
@@ -78,19 +81,19 @@ public class RegistroTesteo {
 		this.fechaHora = fechaHora;
 	}
 
-	/*/**
+	/**
 	 * @return the usuario
-	 
+	 */
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
 	/**
 	 * @param usuario the usuario to set
-	 
+	 */
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}*/
+	}
 
 	/**
 	 * @return the unidadHabitacional

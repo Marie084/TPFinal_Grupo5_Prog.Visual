@@ -10,13 +10,13 @@ public class RegistroPersonaTesteada {
 	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Reg_Per_Testeada_ID")
+	@Column(name="reg_per_testeada_ID")
 	private Long id;
 	@ManyToOne(fetch = FetchType.LAZY)
 	private RegistroTesteo registroTesteo;
 	
 	@ManyToOne(optional = false)//,fetch = FetchType.EAGER
-	@JoinColumn(name="Persona_Testeada_ID")
+	@Column(name="persona_testeada_ID")
 	private PersonaTesteada personaTesteadas;                                //<PersonaTesteada> personaTesteada =new HashSet<>();
 	
 
@@ -36,11 +36,11 @@ public class RegistroPersonaTesteada {
 	 * @param registroTesteo
 	 * @param personaTesteada
 	 */
-	public RegistroPersonaTesteada(Long id, RegistroTesteo registroTesteo, PersonaTesteada personaTesteada) {
+	public RegistroPersonaTesteada(Long id, RegistroTesteo registroTesteo, PersonaTesteada personaTesteadas) {
 		super();
 		this.id = id;
 		this.registroTesteo = registroTesteo;
-		//this.personaTesteada = personaTesteada;
+		this.personaTesteadas = personaTesteadas;
 	}
 	
 	//=========================GET/SET==============================
@@ -92,7 +92,7 @@ public class RegistroPersonaTesteada {
 	@Override
 	public String toString() {
 		return "RegistroPersonaTesteada [id=" + id + ", registroTesteo=" + registroTesteo + ", personaTesteada="
-				/*+ personaTesteada*/ + "]";
+				+ personaTesteadas + "]";
 	}
 
 	

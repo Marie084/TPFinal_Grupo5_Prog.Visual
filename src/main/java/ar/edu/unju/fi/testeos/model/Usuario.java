@@ -16,28 +16,28 @@ public class Usuario {
 	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Usuario_ID")
+	@Column(name="usuario_ID")
 	private Long id;
 	
-	@Column(name = "Nombre_Usuario", unique = true, length = 150, nullable = true)
+	@Column(name = "nombre_usuario", unique = true, length = 150, nullable = true)
 	private String nombreUsuario;
 	
-	@Column(name = "Password")
+	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "Nombre_Real", unique = true, nullable = true)
+	@Column(name = "nombre_Real", unique = true, nullable = true)
 	private String nombreReal;
 	
-	@Column(name = "Apellido_Real", nullable = true)
+	@Column(name = "apellido_real", nullable = true)
 	private String apellidoReal;
 	
 	@Enumerated(EnumType.STRING) // Toma el valor del enumerado y lo guarda en la columna de la tabla.
-	@Column(name = "Tipo_Usuario")
+	@Column(name = "tipo_usuario")
 	private TipoUsuarioEnumerado tipoUsuario;
 	
 	//AGREGE SU SET Y GET NOCE SI SEA CORRECTO ??????
 	@OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
-	@JoinColumn(name="Registro_Testeo_ID")
+	@Column(name="registro_testeo_ID")
 	private Set<RegistroTesteo> registroTesteo = new HashSet<>();
 
 	

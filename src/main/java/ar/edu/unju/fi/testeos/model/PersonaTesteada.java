@@ -13,7 +13,7 @@ public class PersonaTesteada {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Per_Testeada_ID")
+	@Column(name="per_testeada_ID")
 	private Long id;
 	
 	@Column(name = "documento", unique = true,length = 200, nullable = true)
@@ -25,12 +25,12 @@ public class PersonaTesteada {
 	@Column(name = "nombre", nullable = true)
 	private String nombre;
 	
-	@Column(name = "Resultado_Testeo", nullable = true)
+	@Column(name = "resultado_testeo", nullable = true)
 	private Boolean resultadoTesteo;
 	
 	//mappedBy ="personaTesteadas" : me permite
 	@OneToMany(mappedBy ="personaTesteadas" , fetch = FetchType.LAZY)
-	@JoinColumn(name="Reg_Per_Testeada_ID") //dentro pudo agregar  mappedby="personaTesteada": solo me gusta acceder a las marcas  private set<regPERSONATesteada> PERSONASregistradastesteadas= new hashset<>()
+	@Column(name="reg_per_testeada_ID") //dentro pudo agregar  mappedby="personaTesteada": solo me gusta acceder a las marcas  private set<regPERSONATesteada> PERSONASregistradastesteadas= new hashset<>()
 	private Set<RegistroPersonaTesteada> registroPersonaTesteada = new HashSet<>();
 	
 	//=======================DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
