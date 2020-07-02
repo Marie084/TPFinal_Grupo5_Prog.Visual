@@ -10,13 +10,11 @@ public class RegistroPersonaTesteada {
 	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="reg_per_testeada_ID")
 	private Long id;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private RegistroTesteo registroTesteo;
 	
-	@ManyToOne(optional = false)//,fetch = FetchType.EAGER
-	@Column(name="persona_testeada_ID")
+	@ManyToOne
 	private PersonaTesteada personaTesteadas;                                //<PersonaTesteada> personaTesteada =new HashSet<>();
 	
 

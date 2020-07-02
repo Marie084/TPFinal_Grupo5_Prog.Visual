@@ -1,7 +1,6 @@
 package ar.edu.unju.fi.testeos.model;
 
-import java.util.HashSet;
-import java.util.Set;
+
 
 import javax.persistence.*;
 
@@ -13,25 +12,25 @@ public class PersonaTesteada {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="per_testeada_ID")
+	//@Column(name="per_testeada_ID")
 	private Long id;
 	
-	@Column(name = "documento", unique = true,length = 200, nullable = true)
+	@Column(name = "documento")
 	private String documento;
 	
-	@Column(name = "apellido", nullable = true)
+	@Column(name = "apellido")
 	private String apellido;
 	
-	@Column(name = "nombre", nullable = true)
+	@Column(name = "nombre")
 	private String nombre;
 	
-	@Column(name = "resultado_testeo", nullable = true)
+	@Column(name = "resultado_testeo")
 	private Boolean resultadoTesteo;
 	
 	//mappedBy ="personaTesteadas" : me permite
-	@OneToMany(mappedBy ="personaTesteadas" , fetch = FetchType.LAZY)
-	@Column(name="reg_per_testeada_ID") //dentro pudo agregar  mappedby="personaTesteada": solo me gusta acceder a las marcas  private set<regPERSONATesteada> PERSONASregistradastesteadas= new hashset<>()
-	private Set<RegistroPersonaTesteada> registroPersonaTesteada = new HashSet<>();
+	//@OneToMany(mappedBy ="personaTesteadas" , fetch = FetchType.LAZY)
+	//@Column(name="reg_per_testeada_ID") //dentro pudo agregar  mappedby="personaTesteada": solo me gusta acceder a las marcas  private set<regPERSONATesteada> PERSONASregistradastesteadas= new hashset<>()
+	//private Set<RegistroPersonaTesteada> registroPersonaTesteada = new HashSet<>();
 	
 	//=======================DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 
@@ -135,19 +134,7 @@ public class PersonaTesteada {
 		this.resultadoTesteo = resultadoTesteo;
 	}
 	
-	/**
-	 * @return the registroPersonaTesteada
-	 */
-	public Set<RegistroPersonaTesteada> getRegistroPersonaTesteada() {
-		return registroPersonaTesteada;
-	}
-
-	/**
-	 * @param registroPersonaTesteada the registroPersonaTesteada to set
-	 */
-	public void setRegistroPersonaTesteada(Set<RegistroPersonaTesteada> registroPersonaTesteada) {
-		this.registroPersonaTesteada = registroPersonaTesteada;
-	}
+	
 	
 	//=========================VERIFICACION DE COMO ESTA ANDANDO CDA METODO==============================
 

@@ -1,11 +1,11 @@
 package ar.edu.unju.fi.testeos.model;
 
-import java.util.HashSet;
-import java.util.Set;
+//import java.util.HashSet;
+//import java.util.Set;
 
 import javax.persistence.*;
 
-import org.hibernate.type.TrueFalseType;
+//import org.hibernate.type.TrueFalseType;
 
 import ar.edu.unju.fi.enumerado.TipoUsuarioEnumerado;
 
@@ -16,7 +16,7 @@ public class Usuario {
 	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="usuario_ID")
+	//@Column(name="usuario_ID")
 	private Long id;
 	
 	@Column(name = "nombre_usuario", unique = true, length = 150, nullable = true)
@@ -36,9 +36,9 @@ public class Usuario {
 	private TipoUsuarioEnumerado tipoUsuario;
 	
 	//AGREGE SU SET Y GET NOCE SI SEA CORRECTO ??????
-	@OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
-	@Column(name="registro_testeo_ID")
-	private Set<RegistroTesteo> registroTesteo = new HashSet<>();
+	//@OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
+	//@Column(name="registro_testeo_ID")
+	//private Set<RegistroTesteo> registroTesteo = new HashSet<>();
 
 	
 	
@@ -158,20 +158,6 @@ public class Usuario {
 	}
 	
 	
-
-	/**
-	 * @return the registroTesteo
-	 */
-	public Set<RegistroTesteo> getRegistroTesteo() {
-		return registroTesteo;
-	}
-
-	/**
-	 * @param registroTesteo the registroTesteo to set
-	 */
-	public void setRegistroTesteo(Set<RegistroTesteo> registroTesteo) {
-		this.registroTesteo = registroTesteo;
-	}
 
 	//=========================VERIFICACION DE COMO ESTA ANDANDO CADA METODO==============================
 	@Override

@@ -1,17 +1,16 @@
 package ar.edu.unju.fi.testeos.model;
 
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
+
+import org.springframework.lang.NonNull;
 
 /*
  * @Entity me dice q esta clase se va ah comportar como entidad
@@ -32,15 +31,16 @@ public class Barrio {
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="barrio_ID")
+	//@Column(name="barrio_ID")
 	private Long id;
 	
+	@NonNull
 	@Column(name = "nombre",length = 150, nullable = true)
 	private String nombre;
 	
-	@OneToMany(mappedBy = "barrio", fetch = FetchType.EAGER) 
-	@Column(name="unidad_habitacional_ID")
-	private Set<UnidadHabitacional> unidadHabitacional= new HashSet<>();
+	//@OneToMany(mappedBy = "barrio", fetch = FetchType.EAGER) 
+	//@Column(name="unidad_habitacional_ID")
+	//private Set<UnidadHabitacional> unidadHabitacional= new HashSet<>();
 	
 
 	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
@@ -95,19 +95,6 @@ public class Barrio {
 	
 	
 	
-	/**
-	 * @return the unidadHabitacional
-	 */
-	public Set<UnidadHabitacional> getUnidadHabitacional() {
-		return unidadHabitacional;
-	}
-
-	/**
-	 * @param unidadHabitacional the unidadHabitacional to set
-	 */
-	public void setUnidadHabitacional(Set<UnidadHabitacional> unidadHabitacional) {
-		this.unidadHabitacional = unidadHabitacional;
-	}
 
 	//=========================VERIFICACION DE COMO ESTA ANDANDO CADA METODO==============================
 	@Override

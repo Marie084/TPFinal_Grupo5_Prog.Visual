@@ -1,7 +1,7 @@
 package ar.edu.unju.fi.testeos.model;
 
-import java.util.HashSet;
-import java.util.Set;
+//import java.util.HashSet;
+//import java.util.Set;
 
 import javax.persistence.*;
 
@@ -12,18 +12,15 @@ public class UnidadHabitacional {
 	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="unidad_habitacional_ID")
 	private Long id;
 	@Column(name = "direccion")
 	private String direccion;
 	
-	@ManyToOne(optional = false)  //Indica la relacion muchos a uno entre unidadHabitacional y barrio.
-	@Column(name="barrio_ID")
+	@ManyToOne  //Indica la relacion muchos a uno entre unidadHabitacional y barrio.
 	private Barrio barrio;
 	
-	@OneToMany(mappedBy = "unidadHabitacional",fetch = FetchType.EAGER) 
-	@Column(name="registro_testeo_ID")
-	private Set<RegistroTesteo> registroTesteo= new HashSet<>();
+	//@OneToMany
+	//private Set<RegistroTesteo> registroTesteo= new HashSet<>();
     
 	
 
@@ -91,19 +88,7 @@ public class UnidadHabitacional {
 		this.barrio = barrio;
 	}
 	
-	/**
-	 * @return the registroTesteo
-	 */
-	public Set<RegistroTesteo> getRegistroTesteo() {
-		return registroTesteo;
-	}
-
-	/**
-	 * @param registroTesteo the registroTesteo to set
-	 */
-	public void setRegistroTesteo(Set<RegistroTesteo> registroTesteo) {
-		this.registroTesteo = registroTesteo;
-	}
+	
 
 	//=========================VERIFICACION DE COMO ESTA ANDANDO CADA METODO==============================
 	@Override

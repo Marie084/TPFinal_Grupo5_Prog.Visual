@@ -13,18 +13,14 @@ public class RegistroTesteo {
 	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="registro_testeo_ID")
 	private Long id;
-	@Column(name = "fecha_hora")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate fechaHora;
 	
-	@ManyToOne(optional = false)
-	@Column(name="usuario_ID")
+	@ManyToOne
 	private Usuario usuario;
 	
-	@ManyToOne(optional = false)
-	@Column(name="unidad_habitacional_ID")
+	@ManyToOne
 	private UnidadHabitacional unidadHabitacional;
 
 	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
