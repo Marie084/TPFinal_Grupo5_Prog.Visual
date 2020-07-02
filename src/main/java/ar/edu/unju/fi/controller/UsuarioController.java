@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -37,4 +38,29 @@ public class UsuarioController {
     model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
     return "usuario/lista";
     }
+    
+    @RequestMapping(value="/editar/{id}", method=RequestMethod.GET)
+    public String editar(@PathVariable("id") long id, Model model){
+    	model.addAttribute("usuario",usuarioService.getUsuarioPorId(id)); 
+    	return "usuario/editar";
+    }
+    
+    @RequestMapping(value="/actualizar", method=RequestMethod.POST)
+     public String actualizar(@Validated Usuario usuario, BindingResult bindingResult, Model model) {
+    	if(bindingResult.hasErrors()) {
+    		model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
+    		return "usuario/lista";	
+    	}
+    	usuarioService.guardarUsuario(usuario);
+    	model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
+		return "usuario/lista";
+    }
+    
+    @RequestMapping(value="/borrar/{id}", method=RequestMethod.GET)
+      public String borrar(@PathVariable("id") long id, Model model) {
+    	usuarioService.eliminarUsuario(id);
+    	model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
+    	return "usuario/lista";
+    }
+    
 }
