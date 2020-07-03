@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ar.edu.unju.fi.service.BarrioService;
+import ar.edu.unju.fi.service.UnidadHabitacionalService;
 import ar.edu.unju.fi.testeos.model.Barrio;
 
 
@@ -19,6 +20,9 @@ public class BarrioController {
 	
 	@Autowired
 	private BarrioService barrioService;
+	
+	@Autowired
+	private UnidadHabitacionalService unidadHabitacionalService;
 	
 	@RequestMapping(value="", method = RequestMethod.GET)
 	public String main(Model model) {
@@ -47,6 +51,7 @@ public class BarrioController {
     @RequestMapping(value="/editar/{id}", method=RequestMethod.GET)
     public String editar(@PathVariable("id") long id, Model model){
     	model.addAttribute("barrio",barrioService.getBarrioPorId(id)); 
+    	model.addAttribute("unidades", unidadHabitacionalService.obtenerUnidadesHabitacionalesPorBarrio(id));
     	return "barrio/editarBarrio";
     }
     

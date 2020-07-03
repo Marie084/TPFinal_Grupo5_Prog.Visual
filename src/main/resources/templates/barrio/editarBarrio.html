@@ -3,7 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Editar Barrio</title>
 <link href="../../static/css/bootstrap.min.css" rel="stylesheet"
 	th:href="@{/css/bootstrap.min.css}" />
@@ -13,21 +14,21 @@
 		<h1>Editar Barrio</h1>
 	</div>
 	<div class="d-flex justify-content-center">
-		<form action="#" th:action="@{/barrio/actualizar}" th:object="${barrio}"
-			method="post" class="col-10">
-			<input type="hidden" id="id" name="id" th:field="*{id}"/>			
+		<form action="#" th:action="@{/barrio/actualizar}"
+			th:object="${barrio}" method="post" class="col-10">
+			<input type="hidden" id="id" name="id" th:field="*{id}" />
 			<div class="form-group">
-				<label for="nombre" class="col-sm-4 control-label">Nombre
-					de Barrio</label>
+				<label for="nombre" class="col-sm-4 control-label">Nombre de
+					Barrio</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="nombre"
-						id="nombre" th:field="*{nombre}" required="required" />
-					<p typeth:if="${#fields.haserror('nombre')}"
-						th:errors="*{nombre}" class="alert alert-danger" />
+					<input type="text" class="form-control" name="nombre" id="nombre"
+						th:field="*{nombre}" required="required" />
+					<p typeth:if="${#fields.haserror('nombre')}" th:errors="*{nombre}"
+						class="alert alert-danger" />
 				</div>
 			</div>
 
-			
+
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-primary float-right btn-lg">Guardar</button>
@@ -37,7 +38,26 @@
 		</form>
 
 	</div>
-
-
+	<br>
+	<div class="d-flex justify-content-center">
+		<div class="card" style="width: 50%;">
+			<div class="card-body">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Unidad Habitacional</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-th-each="unidad : ${unidades}">
+							<td data-th-text="${unidad.id}"></td>
+							<td data-th-text="${unidad.direccion}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
