@@ -14,8 +14,10 @@ import ar.edu.unju.fi.testeos.model.Barrio;
 @Service
 @Transactional
 public class BarrioServiceImplement implements BarrioService {
+	
 	@Autowired
 	private BarrioRepository barrioRepository;
+	
 	@Override
 	public Barrio getBarrioPorId(Long id) {
 		// TODO Auto-generated method stub
