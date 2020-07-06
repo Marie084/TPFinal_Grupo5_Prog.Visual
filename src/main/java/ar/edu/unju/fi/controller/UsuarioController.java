@@ -32,9 +32,9 @@ public class UsuarioController {
     
     @RequestMapping(value="/crear", method=RequestMethod.POST)
     public String crear(@Validated Usuario usuario,
-    		BindingResult bindingResult, Model model) {
-    usuarioService.guardarUsuario(usuario);
-    model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
+    	BindingResult bindingResult, Model model) {
+    	usuarioService.guardarUsuario(usuario);
+    	model.addAttribute("usuarios", usuarioService.obtenerUsuarios());
     return "usuario/lista";
     }
 }

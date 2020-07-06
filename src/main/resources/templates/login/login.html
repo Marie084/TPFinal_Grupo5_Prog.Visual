@@ -21,10 +21,12 @@
 						<input type="password" class="form-control" placeholder="Contraseña"  name="password"/>
 					</div>
 					<button type="submit" class="btn btn-primary">Ingresar</button>
-				</form>			
-			</div>
+					<!-- <div class="alert-danger text-center" th:if="${formLoginErrorMessage}" th:text="${formLoginErrorMessage}">Name Error</div>-->
+					</form>
+					<div th:if="${param.error}" class="alert alert-danger" role="alert">Combinacion invalida de Usuario y contraseña</div>
+					<div th:if="${param.logout}" class="alert alert-success" role="alert">Ha salido del sistema</div>
+				</div>
 		</div>
-		
 	</div>	
 </body>
 </html>

@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.service;
+package ar.edu.unju.fi.service.implement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-
 import ar.edu.unju.fi.repository.UsuarioRepository;
 import ar.edu.unju.fi.testeos.model.Usuario;
 
@@ -36,5 +34,7 @@ public class LoginUsuarioServiceImp implements UserDetailsService{
 		
 		return user;
 	}
+	
+	
 
 }

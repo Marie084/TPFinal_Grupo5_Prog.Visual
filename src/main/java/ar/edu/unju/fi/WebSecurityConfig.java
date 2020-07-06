@@ -8,13 +8,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import ar.edu.unju.fi.service.LoginUsuarioServiceImp;
+import ar.edu.unju.fi.service.implement.LoginUsuarioServiceImp;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
-
+	
+	@Autowired
+	private AuthenticationSuccessHandler autenticacion;
+	
 	String[] resources = new String[] {
 		"/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**","/webjars/**"	
 	};
@@ -30,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.formLogin()
 				.loginPage("/login")
 				.permitAll()
-				.defaultSuccessUrl("/usuario")
+				.successHandler(autenticacion)
 				.failureUrl("/login?error=true")
 				.usernameParameter("nombreUsuario")
 				.passwordParameter("password")
