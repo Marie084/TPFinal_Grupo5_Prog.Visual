@@ -4,12 +4,12 @@ package ar.edu.unju.fi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ar.edu.unju.fi.service.IPersonaTesteadaService;
+import ar.edu.unju.fi.testeos.model.PersonaTesteada;
 
 
 
@@ -17,7 +17,7 @@ import ar.edu.unju.fi.service.IPersonaTesteadaService;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/consulta")
 public class MainController {
 	
 	@Autowired
@@ -27,17 +27,41 @@ public class MainController {
 	
 	@RequestMapping(value = "",method = RequestMethod.GET)  
 	public String main(Model model) {
-		
-		return "Consulta/formularioConsulta";
+		model.addAttribute("personaTesteada", new PersonaTesteada());
+		return "consulta/consulta";
 	}
 	
 	
 	//de esta manera implemento el html con el service 
-	@RequestMapping(value = "/Consulta/formularioConsulta/{documento}",method = RequestMethod.GET) //SI ESTO ES PARA LLAMAR CON ESTE NOMBRE LA PAGINA HTML 
-	//@PathVariable ("documento"): define la variable por la que se va a buscar la informaicion
-	public String consultas(@PathVariable ("documento") String documento, Model model) {
+	@RequestMapping(value = "/consulta/{documento}",method = RequestMethod.GET) //SI ESTO ES PARA LLAMAR CON ESTE NOMBRE LA PAGINA HTML 
+	public String consultas(@PathVariable ("documento") String documento, Model model ) {                         //@PathVariable ("documento"):lo q capta de value
 		model.addAttribute("personaTesteada", personaTesteadaService.getPersonaTesteadaPorDocumento(documento));
-		return "Consulta/formularioConsulta";
+		return "consulta/consulta";
 	}
+	
+	//este crea un objeto vacio , este objeto vacio se utiliza para la busqueda
+	@RequestMapping(value ="/buscar", method = RequestMethod.GET)
+    public String personaTesteadaSearch(Model model) {
 
-}
+        model.addAttribute("persona", new PersonaTesteada());
+
+        return "consulta/busqueda";
+    }
+
+	//este realiza la busqueda
+	/**
+	 * Este metodo envia el criterio de busqueda para que mediante buscarPorDocuemnto lo busque
+	 * y devuelva las coincidencias.
+	 * @param personaTesteada
+	 * @param model
+	 * @return el html de busqueda.
+	 */
+	@RequestMapping(value ="/buscar", method = RequestMethod.POST)
+    public String personaTesteadaSearch(PersonaTesteada personaTesteada, Model model) {
+
+        model.addAttribute("personas", personaTesteadaService.buscarPorDocumento(personaTesteada.getDocumento()));
+
+        return "consulta/busqueda";
+    }
+
+} 
