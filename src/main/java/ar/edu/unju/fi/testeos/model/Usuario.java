@@ -2,6 +2,8 @@ package ar.edu.unju.fi.testeos.model;
 
 import javax.persistence.*;
 
+import com.sun.istack.NotNull;
+
 import ar.edu.unju.fi.enumerado.TipoUsuarioEnumerado;
 
 @Entity
@@ -10,14 +12,19 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "nombre_usuario")
+	@NotNull	
+	@Column(name = "nombre_usuario", unique=true)
 	private String nombreUsuario;
+	@NotNull
 	@Column(name = "password")
 	private String password;
+	@NotNull
 	@Column(name = "nombre_real")
 	private String nombreReal;
+	@NotNull
 	@Column(name = "apellido_real")
 	private String apellidoReal;
+	@NotNull
 	@Enumerated(EnumType.STRING) // Toma el valor del enumerado y lo guarda en la columna de la tabla.
 	@Column(name = "tipo_usuario")
 	private TipoUsuarioEnumerado tipoUsuario;

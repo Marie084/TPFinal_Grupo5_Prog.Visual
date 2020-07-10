@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+//@ComponentScan({"ar.edu.unju.fi.controller"})
 public class Grupo5TpFinalApplication {
 
 	public static void main(String[] args) {
