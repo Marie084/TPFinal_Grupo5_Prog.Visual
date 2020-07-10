@@ -19,5 +19,6 @@ public interface UsuarioService {
 	
 	List<Usuario> obtenerUsuarios();
 	
+	List<Usuario> buscarPorNombre(String nombre);
 	
 }

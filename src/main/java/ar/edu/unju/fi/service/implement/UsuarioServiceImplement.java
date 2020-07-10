@@ -21,7 +21,7 @@ public class UsuarioServiceImplement implements UsuarioService {
 	/**
 	 * Equivale a: SELECT * FROM USUARIO WHERE ID=":ID"
 	 */
-	@Override
+	@Override 
 	public Usuario getUsuarioPorId(Long id) {
 		return this.usuarioRepository.getOne(id);
 	}
@@ -55,4 +55,10 @@ public class UsuarioServiceImplement implements UsuarioService {
 		return this.usuarioRepository.findAll();
 	}
 
-}
+	@Override
+	public List<Usuario> buscarPorNombre(String nombreReal) {
+		// TODO Auto-generated method stub
+		return this.usuarioRepository.findByNombreRealContaining(nombreReal);
+	}
+
+	}

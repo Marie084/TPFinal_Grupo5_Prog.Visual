@@ -18,6 +18,7 @@ import ar.edu.unju.fi.testeos.model.Barrio;
 @RequestMapping("/barrio")
 public class BarrioController {
 	
+	//
 	@Autowired
 	private BarrioService barrioService;
 	
@@ -27,6 +28,7 @@ public class BarrioController {
 	@RequestMapping(value="", method = RequestMethod.GET)
 	public String main(Model model) {
 		model.addAttribute("barrios", barrioService.obtenerBarrios());
+		model.addAttribute("barrio", new Barrio());
 		return "barrio/listaDeBarrios";
 	}
 	
@@ -73,8 +75,13 @@ public class BarrioController {
    	return "barrio/listaDeBarrios";
    }
     
-    
-    
+   @RequestMapping(value ="/buscar", method = RequestMethod.POST)
+   public String barrioSearch(Barrio barrio, Model model) {
+
+       model.addAttribute("barrios", barrioService.buscarPorNombre(barrio.getNombre()));
+      
+       return "barrio/listaDeBarrios"; 
+   }  
     
 }
 

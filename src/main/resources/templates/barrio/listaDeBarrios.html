@@ -3,14 +3,38 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Barrios</title>
 <link href="../../static/css/bootstrap.min.css" rel="stylesheet"
 	th:href="@{/css/bootstrap.min.css}" />
+<link href="../../static/css/estilos.css" rel="stylesheet"
+	th:href="@{/css/estilos.css}" />
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+		<a href="#" class="navbar-brand">TestCovid-19</a>
+		<button type="button" class="navbar-toggler" data-toggle="collapse"
+			data-target="#navbarCollapse2">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarCollapse2">
+			<div class="navbar-nav">
+				<a href="/usuario" class="nav-item nav-link">Usuarios</a>
+				<a href="/barrio" class="nav-item nav-link active">Barrios</a> 
+			</div>
+			<form class="form-inline ml-auto" th:action="@{/barrio/buscar}"
+				th:object="${barrio}" method="post">
+				<input type="text" class="form-control mr-sm-2" placeholder="Nombre"
+					name="nombre" th:value="${nombre}">
+				<button type="submit" class="btn btn-outline-light">Buscar</button>
+			</form>
+	</nav>
 	<a class="btn btn-info" href="/barrio/nuevo">Nuevo Barrio</a>
 	<hr>
 	<div class="panel panel-info">
@@ -22,36 +46,37 @@
 				<tr>
 					<th>Id</th>
 					<th>Nombre</th>
-					
+
 				</tr>
 			</thead>
 			<tbody>
 				<tr data-th-each="barrio : ${barrios}">
 					<td data-th-text="${barrio.id}"></td>
 					<td data-th-text="${barrio.nombre}"></td>
-					
+
 					<td>
 						<div>
 							<a class="btn btn-success btn-sm text-white "
-								th:href="@{'/barrio/editar/{id}'(id=${barrio.id})}">
-								Editar </a> 
-								
-							<a class="btn btn-danger btn-sm text-white " data-toggle="modal" data-target="#modal-warning"
+								th:href="@{'/barrio/editar/{id}'(id=${barrio.id})}"> Editar
+							</a> <a class="btn btn-danger btn-sm text-white " data-toggle="modal"
+								data-target="#modal-warning"
 								th:attr="data-target='#modal-warning'+${barrio.id}"><span>Borrar</span></a>
-								
+
 							<div class="modal modal-warning fade in"
 								th:id="modal-warning+${barrio.id}">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
-											
+
 											<h5 class="modal-title">Eliminar Barrio</h5>
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
 										</div>
 										<div class="modal-body">
-											<h3>Esta seguro que desea eliminar el barrio seleccionado?</h3>
+											<h3>Esta seguro que desea eliminar el barrio
+												seleccionado?</h3>
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-primary"
@@ -69,9 +94,9 @@
 			</tbody>
 
 		</table>
-
-
 	</div>
-
+<div class="footer">
+		<p>Trabajo Practico Final-Programación Visual-2020</p>
+	</div>
 </body>
 </html>
