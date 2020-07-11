@@ -42,6 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.logout()
 				.permitAll()
 				.logoutSuccessUrl("/login?logout");
+				 http.csrf().disable();
 	}
 	
 	BCryptPasswordEncoder bCryptPasswordEncoder;
