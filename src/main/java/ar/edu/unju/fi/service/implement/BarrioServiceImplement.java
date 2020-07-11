@@ -11,11 +11,14 @@ import ar.edu.unju.fi.repository.BarrioRepository;
 import ar.edu.unju.fi.service.BarrioService;
 import ar.edu.unju.fi.testeos.model.Barrio;
 
+
 @Service
 @Transactional
 public class BarrioServiceImplement implements BarrioService {
+	
 	@Autowired
 	private BarrioRepository barrioRepository;
+	
 	@Override
 	public Barrio getBarrioPorId(Long id) {
 		// TODO Auto-generated method stub
@@ -37,5 +40,9 @@ public class BarrioServiceImplement implements BarrioService {
 	public List<Barrio> obtenerBarrios() {
 		return this.barrioRepository.findAll();
 	}
-
+	
+	@Override
+	public List<Barrio> buscarPorNombre(String nombre) {
+		return this.barrioRepository.findByNombreContaining(nombre);
+}
 }

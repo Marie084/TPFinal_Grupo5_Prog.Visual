@@ -1,7 +1,5 @@
 package ar.edu.unju.fi.repository;
 
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +13,9 @@ import ar.edu.unju.fi.testeos.model.Usuario;
  */
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+	
+	List<Usuario> findByNombreRealContaining(String nombreReal);
+	
 	
 	public Optional<Usuario>findByNombreUsuario(String nombreUsuario);
 }
