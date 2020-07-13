@@ -45,7 +45,7 @@ public class AutenticacionSuccessHandler implements AuthenticationSuccessHandler
 			}
 		}
 		if(tipoRegistrador) {
-			redirectStrategy.sendRedirect(request, response,"/usuario/nuevo");
+			redirectStrategy.sendRedirect(request, response,"/usuario");
 		}
 		else {
 			if(tipoConsultor) {
@@ -53,7 +53,7 @@ public class AutenticacionSuccessHandler implements AuthenticationSuccessHandler
 			}
 			else {
 				if(tipoBD) {
-					redirectStrategy.sendRedirect(request, response,"/usuario/nuevo");
+					redirectStrategy.sendRedirect(request, response,"/usuario");
 				}
 				else {
 					throw new IllegalStateException();

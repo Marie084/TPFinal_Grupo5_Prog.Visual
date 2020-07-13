@@ -34,7 +34,13 @@
 					name="nombreReal" th:value="${nombreReal}">
 				<button type="submit" class="btn btn-outline-light">Buscar</button>
 			</form>
-
+			<a class="btn btn-outline-dark" href="#" th:href="@{/logout}">
+    			<span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+    			<span>->Salir</span>
+    			<span class="float-right">
+    				<i class="fas fa-sign-out-alt"></i>
+    			</span>
+    		</a>
 		</div>
 	</nav>
 	<a class="btn btn-info" href="/usuario/nuevo">Nuevo Usuario</a>
