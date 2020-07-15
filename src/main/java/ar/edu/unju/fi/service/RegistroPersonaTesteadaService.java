@@ -2,21 +2,19 @@ package ar.edu.unju.fi.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import ar.edu.unju.fi.repository.IRegistroPersonaTesteada;
 import ar.edu.unju.fi.testeos.model.RegistroPersonaTesteada;
+import ar.edu.unju.fi.testeos.model.RegistroTesteo;
 
-@Service
-@Transactional(readOnly = true)
-public class RegistroPersonaTesteadaService {
-
-	@Autowired
-	IRegistroPersonaTesteada iRegistroPersonaTesteada;
+public interface RegistroPersonaTesteadaService {
+    
+    RegistroPersonaTesteada getRegistroPersonaTesteadaPorId(Long id);
 	
-	public List<RegistroPersonaTesteada> findAll(){
-		return iRegistroPersonaTesteada.findAll();
-	}
+	RegistroPersonaTesteada guardarRegistroPersonaTesteada(RegistroPersonaTesteada registroPersonaTesteada);
+	
+	void eliminarRegistroPersonaTesteada(Long id);
+	
+	List<RegistroPersonaTesteada> obtenerRegistroPersonaTesteada(RegistroTesteo registroTesteo);
+	
+	
 }
+

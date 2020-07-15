@@ -17,4 +17,5 @@ public interface BarrioService {
 	List<Barrio> obtenerBarrios();
 	
 	List<Barrio> buscarPorNombre(String nombre);
+	Barrio buscarBarrioPorNombre(String nombre);
 }

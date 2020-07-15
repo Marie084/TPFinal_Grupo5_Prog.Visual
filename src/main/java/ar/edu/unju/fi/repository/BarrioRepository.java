@@ -12,4 +12,5 @@ import ar.edu.unju.fi.testeos.model.Barrio;
 public interface BarrioRepository extends JpaRepository<Barrio, Long>{
       
 	List<Barrio> findByNombreContaining(String nombre);
+	Barrio findByNombre(String nombre);
 }

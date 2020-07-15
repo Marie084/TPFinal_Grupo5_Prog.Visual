@@ -1,10 +1,13 @@
 package ar.edu.unju.fi.testeos.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
@@ -14,8 +17,11 @@ import com.sun.istack.NotNull;
  * @Table es la relacion entre el nombre de la tabla de la bd y la entidad.
  */
 @Entity
-@Table(name = "barrio")
+@Table(name = "Barrio")
 public class Barrio {
+	
+
+	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	/*
 	 * @Id indica que es la clave primaria de la tabla barrio.
 	 * 
@@ -29,7 +35,13 @@ public class Barrio {
 	@NotNull
 	@Column(name = "nombre")  
 	private String nombre;
+	
+	//@OneToMany(mappedBy = "barrio", fetch = FetchType.EAGER) 
+	//@Column(name="unidad_habitacional_ID")
+	//private Set<UnidadHabitacional> unidadHabitacional= new HashSet<>();
+	
 
+	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 	/**
 	 * Constructor con parámetros.
 	 * 
@@ -47,6 +59,9 @@ public class Barrio {
 	 */
 	public Barrio() {
 	}
+	
+	
+	//=========================GET/SET==============================
 
 	/**
 	 * @return the id
@@ -75,7 +90,11 @@ public class Barrio {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	
+	
 
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CADA METODO==============================
 	@Override
 	public String toString() {
 		return "Barrio [id=" + id + ", nombre=" + nombre + "]";
