@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -81,9 +80,9 @@ public class RegistroTesteoController {
 	public String agregarPersona(RegistroUtil registroUtil, Model model) { //registroUtil contiene los datos cargados en el formulario: usuario,uh,barrio,personaTesteada.
 		//Buscar un registro que si exista en la base de datos con el id que se encuentra en la variable registroTesteo de la clase RegistroUtil.
 		RegistroTesteo regTest = this.registroTesteoService.getRegistroTesteoPorId(registroUtil.getRegistroTesteo().getId());
-		
+		//obtine el nombre del registroUtil se lo asigna al nuevo barrio y lo guarda en la base de datos.
 		Barrio barrio = this.barrioService.guardarBarrio(new Barrio(null, registroUtil.getBarrio().getNombre()));
-		
+		//obtiene la direccion de la uh la asigna a la uh nueva y por la relacion entre barrio y uh guarda en la base de datos la direccion con el anteriormente cargado.
 		UnidadHabitacional unidadHabitacional = this.unidadHabitacionalService
 				.guardarUnidadHabitacional(new UnidadHabitacional(null, registroUtil.getUnidadHabitacional().getDireccion(), barrio));
 		
@@ -92,7 +91,7 @@ public class RegistroTesteoController {
 		Usuario usuario = this.usuarioService.buscarPorNombre(registroUtil.getUsuario().getNombreReal()).get(0);
 		regTest.setUsuario(usuario);
 		regTest.setFechaHora(LocalDateTime.now());
-		
+		//guarda los datos cargados a la entidad registroTesteo.
 		this.registroTesteoService.guardarRegistroTesteo(regTest);
 		
 		PersonaTesteada personaTesteada = this.personaTesteadaService.guardarPersonaTesteada(registroUtil.getPersonaTesteada());
@@ -113,11 +112,7 @@ public class RegistroTesteoController {
 		return "registroTesteo/nuevoRegistro";
 	}
 
-	@RequestMapping(value = "/crear", method = RequestMethod.POST)
-	public String crear(@Validated RegistroUtil personaTesteada, Model model) {
-
-		return "registroTesteo/ListaRegistros";
-	}
+	
 
 	
 	@RequestMapping(value = "/borrar/{id}", method = RequestMethod.GET)
