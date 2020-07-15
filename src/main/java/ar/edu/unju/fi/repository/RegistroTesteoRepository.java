@@ -1,5 +1,12 @@
 package ar.edu.unju.fi.repository;
 
-public interface RegistroTesteoRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import ar.edu.unju.fi.testeos.model.RegistroTesteo;
+
+
+@Repository
+public interface RegistroTesteoRepository extends JpaRepository<RegistroTesteo, Long> {
 
 }

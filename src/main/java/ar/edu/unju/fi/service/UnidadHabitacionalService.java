@@ -16,5 +16,5 @@ public interface UnidadHabitacionalService {
 	List<UnidadHabitacional> obtenerUnidadesHabitacionales();
 	
 	List<UnidadHabitacional> obtenerUnidadesHabitacionalesPorBarrio(Long barrioId);
-
+	UnidadHabitacional buscarUhPorNombre(String nombre);
 }

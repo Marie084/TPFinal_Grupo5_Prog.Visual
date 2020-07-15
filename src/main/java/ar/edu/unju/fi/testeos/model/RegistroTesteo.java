@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.testeos.model;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
@@ -14,9 +15,8 @@ public class RegistroTesteo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private LocalDate fechaHora;
-	
+	@Column(name = "fecha_hora")
+	private LocalDateTime fechaHora;
 	@ManyToOne
 	private Usuario usuario;
 	
@@ -39,7 +39,7 @@ public class RegistroTesteo {
 	 * @param usuario
 	 * @param unidadHabitacional
 	 */
-	public RegistroTesteo(Long id, LocalDate fechaHora, Usuario usuario, UnidadHabitacional unidadHabitacional) {//
+	public RegistroTesteo(Long id, LocalDateTime fechaHora, Usuario usuario, UnidadHabitacional unidadHabitacional) {
 		super();
 		this.id = id;
 		this.fechaHora = fechaHora;
@@ -66,14 +66,14 @@ public class RegistroTesteo {
 	/**
 	 * @return the fechaHora
 	 */
-	public LocalDate getFechaHora() {
+	public LocalDateTime getFechaHora() {
 		return fechaHora;
 	}
 
 	/**
 	 * @param fechaHora the fechaHora to set
 	 */
-	public void setFechaHora(LocalDate fechaHora) {
+	public void setFechaHora(LocalDateTime fechaHora) {
 		this.fechaHora = fechaHora;
 	}
 

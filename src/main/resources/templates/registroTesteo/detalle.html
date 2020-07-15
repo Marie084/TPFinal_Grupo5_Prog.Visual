@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Detalle</title>
+<link href="../../static/css/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+		<a href="#" class="navbar-brand">TestCovid-19</a>
+		<button type="button" class="navbar-toggler" data-toggle="collapse"
+			data-target="#navbarCollapse2">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</nav>
+
+	<hr>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3>Detalle</h3>
+		</div>
+		<div>
+			<form th:object="${registroTesteo}">
+				<input type="hidden" id="id" name="id" th:field="*{id}" />
+				<div class="form-group">
+					<label for="fechaHora" class="col-sm-4 control-label">Fecha
+						y Hora</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="fechaHora"
+							id="fechaHora" th:field="*{fechaHora}" disabled="disabled" />
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="unidadHabitacional" class="col-sm-4 control-label">Unidad
+						Habitacional</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="unidadHabitacional"
+							id="unidadHabitacional"
+							th:field="*{unidadHabitacional.direccion}" disabled="disabled" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="barrio" class="col-sm-4 control-label">Barrio</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" disabled="disabled"
+							th:field="${registroTesteo.unidadHabitacional.barrio.nombre}" />
+
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="panel-heading">
+			<h3>Personas Testeadas</h3>
+		</div>
+		<div class="container">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Documento</th>
+						<th>Apellido</th>
+						<th>Nombre</th>
+						<th>Resultado Testeo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr
+						data-th-each="registroPersonaTesteada : ${registroPersonasTesteadas}">
+						<td
+							data-th-text="${registroPersonaTesteada.personaTesteada.documento}"></td>
+						<td
+							data-th-text="${registroPersonaTesteada.personaTesteada.apellido}"></td>
+						<td
+							data-th-text="${registroPersonaTesteada.personaTesteada.nombre}"></td>
+						<td><span
+							th:if="${registroPersonaTesteada.personaTesteada.resultadoTesteo}">Positivo</span>
+							<span
+							th:if="${!registroPersonaTesteada.personaTesteada.resultadoTesteo}">Negativo</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="col-sm-offset-2 col-sm-10">
+			<a class="btn btn-warning float-right btn-lg" href="/registroTesteo">Volver</a>
+		</div>
+	</div>
+
+
+</body>
+</html>

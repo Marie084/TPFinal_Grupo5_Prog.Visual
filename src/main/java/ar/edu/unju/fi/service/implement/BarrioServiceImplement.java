@@ -45,4 +45,8 @@ public class BarrioServiceImplement implements BarrioService {
 	public List<Barrio> buscarPorNombre(String nombre) {
 		return this.barrioRepository.findByNombreContaining(nombre);
 }
+	@Override
+	public Barrio buscarBarrioPorNombre(String nombre) {
+		return this.barrioRepository.findByNombre(nombre);
+}
 }

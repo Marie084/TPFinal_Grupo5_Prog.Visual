@@ -22,26 +22,23 @@ public class UnidadHabitacionalServiceImplement implements UnidadHabitacionalSer
 	
 	@Override
 	public UnidadHabitacional getUnidadHabitacionalPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.unidadHabitacionalRepository.getOne(id);
 	}
 
 	@Override
 	public UnidadHabitacional guardarUnidadHabitacional(UnidadHabitacional unidadHabitacional) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.unidadHabitacionalRepository.save(unidadHabitacional);
 	}
 
 	@Override
 	public void eliminarUnidadHabitacional(Long id) {
-		// TODO Auto-generated method stub
+		this.unidadHabitacionalRepository.deleteById(id);
 
 	}
 
 	@Override
 	public List<UnidadHabitacional> obtenerUnidadesHabitacionales() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.unidadHabitacionalRepository.findAll();
 	}
 
 	@Override
@@ -50,5 +47,10 @@ public class UnidadHabitacionalServiceImplement implements UnidadHabitacionalSer
 		List<UnidadHabitacional> list = this.unidadHabitacionalRepository.findAllByBarrio(barrio);
 		return list;
 	}
-
+	
+	@Override
+	public UnidadHabitacional buscarUhPorNombre(String direccion) {
+		return this.unidadHabitacionalRepository.findByDireccion(direccion);
+}
+    
 }
