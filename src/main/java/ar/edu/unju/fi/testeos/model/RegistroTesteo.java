@@ -5,9 +5,13 @@ import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "registro_testeo")
 public class RegistroTesteo {
+	
+	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -15,9 +19,11 @@ public class RegistroTesteo {
 	private LocalDateTime fechaHora;
 	@ManyToOne
 	private Usuario usuario;
+	
 	@ManyToOne
 	private UnidadHabitacional unidadHabitacional;
 
+	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 	/**
 	 * Constructor sin parametros.
 	 */
@@ -40,7 +46,9 @@ public class RegistroTesteo {
 		this.usuario = usuario;
 		this.unidadHabitacional = unidadHabitacional;
 	}
-
+	
+	
+	//=========================GET/SET===========================================
 	/**
 	 * @return the id
 	 */
@@ -96,10 +104,12 @@ public class RegistroTesteo {
 	public void setUnidadHabitacional(UnidadHabitacional unidadHabitacional) {
 		this.unidadHabitacional = unidadHabitacional;
 	}
-
+	
+	
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CDA METODO==============================
 	@Override
 	public String toString() {
-		return "RegistroTesteo [id=" + id + ", fechaHora=" + fechaHora + ", usuario=" + usuario
+		return "RegistroTesteo [id=" + id + ", fechaHora=" + fechaHora //+ ", usuario=" + usuario
 				+ ", unidadHabitacional=" + unidadHabitacional + "]";
 	}
 
