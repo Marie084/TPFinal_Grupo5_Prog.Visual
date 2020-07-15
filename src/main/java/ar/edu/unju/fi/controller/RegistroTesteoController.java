@@ -61,19 +61,25 @@ public class RegistroTesteoController {
 
 	@RequestMapping(value = "/nuevo2", method = RequestMethod.GET)
 	public String nuevo2(Model model) {
+		//Crear una instancia vacia de RegistroTesteo
 		RegistroTesteo registroT = new RegistroTesteo();
+		//se agrega la fecha y la hora actual a la variable fechaHora.
 		registroT.setFechaHora(LocalDateTime.now());
+		//se guarda registroT en la base de datos y el objeto guardado se asigna a registroTesteo.
 		RegistroTesteo registroTesteo = this.registroTesteoService.guardarRegistroTesteo(registroT);
+		//se crea una instancia vacia de RegistroUtil.
 		RegistroUtil registroUtil = new RegistroUtil();
+		//a la variable RegistroTesteo de la clase RegistroUtil se le asigna el registroTesteo creado anteriormente.
 		registroUtil.setRegistroTesteo(registroTesteo);
-		
+		//al objeto de tipo model se le agrega el atributo de nombre registroTesteoUtil que contiene al objeto registroUtil.
 		model.addAttribute("registroTesteoUtil", registroUtil);
 
 		return "registroTesteo/nuevoRegistro";
 	}
 	
 	@RequestMapping(value = "/agregarPersona", method = RequestMethod.POST)
-	public String agregarPersona(RegistroUtil registroUtil, Model model) {
+	public String agregarPersona(RegistroUtil registroUtil, Model model) { //registroUtil contiene los datos cargados en el formulario: usuario,uh,barrio,personaTesteada.
+		//Buscar un registro que si exista en la base de datos con el id que se encuentra en la variable registroTesteo de la clase RegistroUtil.
 		RegistroTesteo regTest = this.registroTesteoService.getRegistroTesteoPorId(registroUtil.getRegistroTesteo().getId());
 		
 		Barrio barrio = this.barrioService.guardarBarrio(new Barrio(null, registroUtil.getBarrio().getNombre()));
