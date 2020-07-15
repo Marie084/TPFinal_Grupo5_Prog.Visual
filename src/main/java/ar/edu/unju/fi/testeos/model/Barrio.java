@@ -10,10 +10,10 @@ import javax.persistence.Id;
 
 import javax.persistence.Table;
 
-import org.springframework.lang.NonNull;
+import com.sun.istack.NotNull;
 
 /*
- * @Entity me dice q esta clase se va ah comportar como entidad
+ * @Entity Con esta notacion se le dice al JPA que la clase barrio es una entidad.
  * @Table es la relacion entre el nombre de la tabla de la bd y la entidad.
  */
 @Entity
@@ -25,17 +25,15 @@ public class Barrio {
 	/*
 	 * @Id indica que es la clave primaria de la tabla barrio.
 	 * 
-	 * @GeneratedValue lo que hace es generar el id automaticamente.
-	 * 
-	 * @Column relaciona nombre con el nombre de la columna de la tabla.
+	 * @GeneratedValue Obliga a que el id de la tabla se autoincrementable.
+	 * @NotNull Esta notación sirve para validar los campos, en este caso comprueba que el campo no esté vacío.
+	 * @Column  Esta notación relaciona nombre con el nombre de la columna de la tabla. Se utiliza para representar columnas simples.
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name="barrio_ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
-	@NonNull
-	@Column(name = "nombre",length = 150, nullable = true)
+	@NotNull
+	@Column(name = "nombre")  
 	private String nombre;
 	
 	//@OneToMany(mappedBy = "barrio", fetch = FetchType.EAGER) 
@@ -45,7 +43,7 @@ public class Barrio {
 
 	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 	/**
-	 * Constructor con parametros.
+	 * Constructor con parámetros.
 	 * 
 	 * @param id
 	 * @param nombre

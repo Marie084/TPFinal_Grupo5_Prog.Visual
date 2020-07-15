@@ -5,7 +5,7 @@ package ar.edu.unju.fi.testeos.model;
 
 import javax.persistence.*;
 
-//import org.hibernate.type.TrueFalseType;
+import com.sun.istack.NotNull;
 
 import ar.edu.unju.fi.enumerado.TipoUsuarioEnumerado;
 
@@ -18,19 +18,19 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name="usuario_ID")
 	private Long id;
-	
-	@Column(name = "nombre_usuario", unique = true, length = 150, nullable = true)
+	@NotNull	
+	@Column(name = "nombre_usuario", unique=true)
 	private String nombreUsuario;
-	
+	@NotNull
 	@Column(name = "password")
 	private String password;
-	
-	@Column(name = "nombre_Real", unique = true, nullable = true)
+	@NotNull
+	@Column(name = "nombre_real")
 	private String nombreReal;
-	
-	@Column(name = "apellido_real", nullable = true)
+	@NotNull
+	@Column(name = "apellido_real")
 	private String apellidoReal;
-	
+	@NotNull
 	@Enumerated(EnumType.STRING) // Toma el valor del enumerado y lo guarda en la columna de la tabla.
 	@Column(name = "tipo_usuario")
 	private TipoUsuarioEnumerado tipoUsuario;
