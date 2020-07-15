@@ -60,6 +60,14 @@ public class CosultorContoller {
         return "consulta/busqueda";
     }
 	
+	//este realiza la busqueda por apellido
+		/**
+		 * Este metodo envia el criterio de busqueda para que mediante buscarPorApellido lo busque
+		 * y devuelva las coincidencias.
+		 * @param personaTesteada
+		 * @param model
+		 * @return el html de busqueda.
+		 */
 	@RequestMapping(value ="/buscarPorApellido", method = RequestMethod.POST)
     public String personaTesteadaApellidoSearch(PersonaTesteada personaTesteada, Model model) {
 
