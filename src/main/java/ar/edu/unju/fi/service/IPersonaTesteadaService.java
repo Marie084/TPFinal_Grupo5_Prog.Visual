@@ -12,7 +12,11 @@ public interface IPersonaTesteadaService {
 	
 	public List<PersonaTesteada> listarAll();
 	
-        List<PersonaTesteada> buscarPorDocumento(String documento);
+	List<PersonaTesteada> buscarPorDocumento(String documento);
+	
+	
+	List<PersonaTesteada> buscarPorApellido(String apellido);
+	
         
 }
 

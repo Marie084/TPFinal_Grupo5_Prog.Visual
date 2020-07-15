@@ -1,76 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Tabla de consulta</title>
+<link href="../../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 
-<!-- BUSCAR en maven->bootstrap ENCONTRAMOS DIFERENTES dependencias   -->
-
-<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
- <div>
- <form>
-  <h3>Formulario de Consulta</h3>
-  
+
+<div>
+<h3>Formulario de Consulta</h3>
+ <br>
+ <form th:object="">
   <div class="form-row">
+    
     <div class="col-md-6 mb-3">
-      <label for="validationDefault01">dni</label>
-      <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
+      <label for="validationDefault01">Fecha y hora 1</label>
+      <input type="datetime-local" class="form-control" id="validationDefault01" th:value="" required>
     </div>
+    
     <div class="col-md-6 mb-3">
-      <label for="validationDefault02">Apellido</label>
-      <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+      <label for="validationDefault02">fecha y hora 2</label>
+      <input type="datetime-local" class="form-control" id="validationDefault02" th:value="" required>
     </div>
-  </div>
-  
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationDefault01">Fecha1</label>
-      <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
-    </div>
-    <div class="col-md-6 mb-3">
-      <label for="validationDefault02">fecha2</label>
-      <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-    </div>
-  </div>
-  
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationDefault01">Unidad Habitacional</label>
-      <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
-    </div>
-    <div class="col-md-6 mb-3">
-      <label for="validationDefault02">Cantidad de testeo por dia</label>
-      <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-    </div>
-  </div>
-  
-  <div class="form-row">
+
     <div class="col-md-6 mb-3">
       <label for="validationDefault03">Barrio</label>
       <input type="text" class="form-control" id="validationDefault03" required>
     </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationDefault04">estado</label>
-      <select class="custom-select" id="validationDefault04" required>
-        <option selected disabled value="">+</option>
-        <option>-</option>
-      </select>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationDefault05">Zip</label>
-      <input type="text" class="form-control" id="validationDefault05" required>
-    </div>
   </div>
- 
-
-  
-  <button class="btn btn-primary" type="submit">Buscar</button>
-   
+  <button type="submit" class="btn btn-primary mb-2" value="Search">Buscar</button>
 </form>
+</div>  
  
- <form th:object="${personaTesteada}" th:action="@{/consulta/${search}}" method="get">
+ <!--<form class="btn btn-primary mb-2" th:object="${personaTesteada}" th:action="@{/consulta/${search}}" method="get">
         <input type="text" name="search" id="search" th:value="${search}"/>
         <input type="submit" value="Search"/>
         <div th:if="${not #lists.isEmpty(search)}">
@@ -92,7 +55,8 @@
         </div>
     </form>
  
- </div>
+ </div>-->
+ <br>
 <div class="table-responsive">
      <h3>TABLA DE CONSULTA</h3>
      <table class="table table-striped">

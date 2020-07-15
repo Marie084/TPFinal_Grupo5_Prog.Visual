@@ -12,4 +12,7 @@ public interface PersonaTesteadaRepository extends JpaRepository<PersonaTesteada
       
 	PersonaTesteada findByDocumento(String documento);
 	List<PersonaTesteada> findByDocumentoContaining(String Documento);
+	
+	PersonaTesteada findByApellido(String apellido);
+	List<PersonaTesteada> findByApellidoContaining(String Apellido);
 }

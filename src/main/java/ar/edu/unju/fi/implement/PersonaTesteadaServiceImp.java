@@ -36,4 +36,10 @@ public class PersonaTesteadaServiceImp implements IPersonaTesteadaService {
 		// TODO Auto-generated method stub
 		return this.personaTesteadaRepository.findByDocumentoContaining(documento);
 	}
+
+	@Override
+	public List<PersonaTesteada> buscarPorApellido(String apellido) {
+		// TODO Auto-generated method stub
+		return this.personaTesteadaRepository.findByApellidoContaining(apellido);
+	}
 }
