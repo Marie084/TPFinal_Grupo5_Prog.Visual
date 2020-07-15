@@ -111,9 +111,7 @@ public class UsuarioController {
 	 */
 	@RequestMapping(value ="/buscar", method = RequestMethod.POST)
     public String usuarioSearch(Usuario usuario, Model model) {
-
         model.addAttribute("usuarios", usuarioService.buscarPorNombre(usuario.getNombreReal()));
-
         return "usuario/lista";
     }
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<link href="../../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+<link href="../../static/css/estiloLogin.css" rel="stylesheet" th:href="@{/css/estiloLogin.css}"/>
+</head>
+<body>
+	<div class="modal-dialog text-center">
+		<div class="col-sm-8 main-section">
+			<div class="modal-content">
+				<div class="col-12 user-img">
+					<img src="../img/avatar1.png">
+				</div>
+				<form class="col-12" th:object=${usuarioDelForm} th:action="@{/login}" method="post">
+					<div class="form-group" id="user-group">
+						<input type="text" class="form-control"placeholder="Nombre de Usuario" name="nombreUsuario"/>
+					</div>
+					<div class="form-group" id="contrasena-group">
+						<input type="password" class="form-control" placeholder="Contraseña"  name="password"/>
+					</div>
+					<button type="submit" class="btn btn-primary">Ingresar</button>
+					<!-- <div class="alert-danger text-center" th:if="${formLoginErrorMessage}" th:text="${formLoginErrorMessage}">Name Error</div>-->
+					</form>
+					<div th:if="${param.error}" class="alert alert-danger" role="alert">Combinacion invalida de Usuario y contraseña</div>
+					<div th:if="${param.logout}" class="alert alert-success" role="alert">Ha salido del sistema</div>
+				</div>
+		</div>
+	</div>	
+</body>
+</html>

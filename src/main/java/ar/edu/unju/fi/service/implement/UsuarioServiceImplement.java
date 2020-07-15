@@ -3,6 +3,7 @@ package ar.edu.unju.fi.service.implement;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,6 +37,9 @@ public class UsuarioServiceImplement implements UsuarioService {
 	 */
 	@Override
 	public Usuario guardarUsuario(Usuario usuario) {
+		String pw = usuario.getPassword();
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+		usuario.setPassword(bCryptPasswordEncoder.encode(pw));
 		return this.usuarioRepository.save(usuario);
 	}
 
