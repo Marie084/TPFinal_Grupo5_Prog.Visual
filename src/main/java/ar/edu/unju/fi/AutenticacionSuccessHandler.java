@@ -14,6 +14,12 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
+
+/**
+ * @author maximiliano
+ * Esta clase maneja el exito del logueo, redirigiendo a distintas paginas dependiendo el usuario
+ */
+
 @Component
 public class AutenticacionSuccessHandler implements AuthenticationSuccessHandler{
 	
@@ -45,11 +51,11 @@ public class AutenticacionSuccessHandler implements AuthenticationSuccessHandler
 			}
 		}
 		if(tipoRegistrador) {
-			redirectStrategy.sendRedirect(request, response,"/usuario");
+			redirectStrategy.sendRedirect(request, response,"/registroTesteo");
 		}
 		else {
 			if(tipoConsultor) {
-				redirectStrategy.sendRedirect(request, response,"/usuario");
+				redirectStrategy.sendRedirect(request, response,"/consulta");
 			}
 			else {
 				if(tipoBD) {

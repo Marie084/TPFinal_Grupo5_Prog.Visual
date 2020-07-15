@@ -14,11 +14,19 @@ import ar.edu.unju.fi.service.implement.LoginUsuarioServiceImp;
 
 @Configuration
 @EnableWebSecurity
+
+
+/**
+ * @author maximiliano
+ * Se define la configuracion de seguridad
+ **/
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	private AuthenticationSuccessHandler autenticacion;
 	
+	//Necesario para evitar que la seguridad se aplique a los resources
+    //Como los css, imagenes y javascripts
 	String[] resources = new String[] {
 		"/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**","/webjars/**"	
 	};
@@ -29,7 +37,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()
 				.antMatchers(resources).permitAll()
 				.antMatchers("/").permitAll()
-				//.antMatchers("/usuario*","/barrio*").access("hasRole('BD')")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
