@@ -57,7 +57,6 @@ public class UsuarioServiceImplement implements UsuarioService {
 
 	@Override
 	public List<Usuario> buscarPorNombre(String nombreReal) {
-		// TODO Auto-generated method stub
 		return this.usuarioRepository.findByNombreRealContaining(nombreReal);
 	}
 

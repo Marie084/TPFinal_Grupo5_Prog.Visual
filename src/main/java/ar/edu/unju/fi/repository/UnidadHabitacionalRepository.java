@@ -11,4 +11,5 @@ import ar.edu.unju.fi.testeos.model.UnidadHabitacional;
 @Repository
 public interface UnidadHabitacionalRepository extends JpaRepository<UnidadHabitacional, Long> {
        List<UnidadHabitacional> findAllByBarrio(Barrio barrio);
+       UnidadHabitacional findByDireccion(String direccion);
 }

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Nuevo Registro</title>
+<link href="../../static/css/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+		<a href="#" class="navbar-brand">TestCovid-19</a>
+		<button type="button" class="navbar-toggler" data-toggle="collapse"
+			data-target="#navbarCollapse2">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</nav>
+	<div class="page-header">
+		<h1>Nuevo Registro</h1>
+	</div>
+	<hr>
+	<div class="d-flex justify-content-center">
+		<div class="container">
+			<form action="#" th:action="@{/registroTesteo/agregarPersona}"
+				th:object="${registroTesteoUtil}" method="post" class="row">
+				<div class="form-group col-sm-6 col-xs-12 col-4 ">
+					<label for="nombre" class="control-label">ID Registro</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="registroTesteo"
+							id="registroTesteo" placeholder="registroTesteo"
+							th:field="*{registroTesteo.id}" />
+					</div>
+				</div>
+
+				<div class="form-group col-sm-6 col-xs-12 col-4 ">
+					<label for="nombre" class="control-label">Fecha y Hora</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="fechaHora"
+							id="fechaHora" placeholder="fechaHora"
+							th:field="*{registroTesteo.fechaHora}" />
+					</div>
+				</div>
+
+				<div class="form-group col-sm-6 col-xs-12 col-4 ">
+					<label for="nombre" class="control-label">Nombre de
+						Registrador</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="nombreReal"
+							id="nombreReal" placeholder="nombre..." required="required"
+							th:field="*{usuario.nombreReal}" />
+					</div>
+				</div>
+
+				<div class="form-group col-sm-6 col-xs-12 col-4 ">
+					<label for="nombre" class="control-label">Unidad
+						Habitacional</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="direccion"
+							id="direccion" placeholder="direccion" required="required"
+							th:field="*{unidadHabitacional.direccion}" />
+					</div>
+				</div>
+
+				<div class="form-group col-sm-6 col-xs-12 col-4 ">
+					<label for="nombre" class="control-label">Barrio</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="nombre" id="nombre"
+							placeholder="Nombre..." required="required"
+							th:field="*{barrio.nombre}" />
+					</div>
+				</div>
+
+				<div class="form-group col-sm-6 col-xs-12 col-4 ">
+					<label for="nombre"
+						class="col-sm-6 col-xs-12 col-lg-4 control-label">Documento</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="documento"
+							id="documento" placeholder="N° de documento" required="required"
+							th:field="*{personaTesteada.documento}" />
+						<p typeth:if="${#fields.haserror('personaTesteada.documento')}"
+							th:errors="*{personaTesteada.documento}"
+							class="alert alert-danger" />
+					</div>
+				</div>
+
+				<div class="form-group col-sm-6 col-xs-12 col-4 ">
+					<label for="apellido"
+						class="col-sm-6 col-xs-12 col-lg-4 control-label">Apellido</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="apellido"
+							id="apellido" placeholder="Apellido" required="required"
+							th:field="*{personaTesteada.apellido}" />
+						<p typeth:if="${#fields.haserror('personaTesteada.apellido')}"
+							th:errors="*{personaTesteada.apellido}"
+							class="alert alert-danger" />
+					</div>
+				</div>
+				<div class="form-group col-sm-6 col-xs-12 col-4 ">
+					<label for="apellido"
+						class="col-sm-6 col-xs-12 col-lg-4 control-label">Nombre</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="nombre" id="nombre"
+							placeholder="Nombre" required="required"
+							th:field="*{personaTesteada.nombre}" />
+						<p typeth:if="${#fields.haserror('personaTesteada.nombre')}"
+							th:errors="*{personaTesteada.nombre}" class="alert alert-danger" />
+					</div>
+				</div>
+				<div class="form-group col-sm-6 col-xs-12 col-4 ">
+					<label for="apellido"
+						class="col-sm-6 col-xs-12 col-lg-4 control-label">Resultado
+						Testeo</label>
+					<div class="col-sm-10">
+						<select th:field="*{personaTesteada.resultadoTesteo}">
+							<option th:value="true" th:text="Positivo"></option>
+							<option th:value="false" th:text="Negativo"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group col-sm-6 col-xs-12 col-4 ">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary float-right btn-lg">Agregar</button>
+						<a class="btn btn-danger float-right btn-lg"
+							th:href="@{'/registroTesteo/borrar/{id}'(id=*{registroTesteo.id})}">Cancelar</a>
+						<div class="col-sm-offset-2 col-sm-10">
+							<a class="btn btn-warning float-right btn-lg"
+								href="/registroTesteo">Volver</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel-heading">
+					<h3>Personas Testeadas</h3>
+				</div>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Documento</th>
+							<th>Apellido</th>
+							<th>Nombre</th>
+							<th>Resultado Testeo</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							data-th-each="registroPersonaTesteada : *{listaPersonasTesteadas}">
+							<td
+								data-th-text="${registroPersonaTesteada.personaTesteada.documento}"></td>
+							<td
+								data-th-text="${registroPersonaTesteada.personaTesteada.apellido}"></td>
+							<td
+								data-th-text="${registroPersonaTesteada.personaTesteada.nombre}"></td>
+							<td><span
+								th:if="${registroPersonaTesteada.personaTesteada.resultadoTesteo}">Positivo</span>
+								<span
+								th:if="${!registroPersonaTesteada.personaTesteada.resultadoTesteo}">Negativo</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+
+
+</body>
+</html>

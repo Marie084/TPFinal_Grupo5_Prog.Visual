@@ -16,7 +16,14 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<a class="btn btn-info" href="/registroNuevo/nuevoRegistro">Nuevo
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+		<a href="#" class="navbar-brand">TestCovid-19</a>
+		<button type="button" class="navbar-toggler" data-toggle="collapse"
+			data-target="#navbarCollapse2">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</nav>
+	<a class="btn btn-info" href="/registroTesteo/nuevo2">Nuevo
 		Registro</a>
 	<hr>
 	<div class="panel panel-info">
@@ -36,13 +43,22 @@
 			<tbody>
 				<tr data-th-each="registroTesteo : ${registros}">
 					<td data-th-text="${registroTesteo.id}"></td>
-					<td	data-th-text="${#temporals.format(registroTesteo.fechaHora, 'dd-MM-yyyy HH:mm')}"></td>
-					<td data-th-text="|${registroTesteo.usuario.nombreReal}  ${registroTesteo.usuario.apellidoReal}|"></td>
+					<td
+						data-th-text="${#temporals.format(registroTesteo.fechaHora, 'dd-MM-yyyy HH:mm')}"></td>
+					<td
+						data-th-text="|${registroTesteo.usuario.nombreReal}  ${registroTesteo.usuario.apellidoReal}|"></td>
 					<td data-th-text="${registroTesteo.unidadHabitacional.direccion}"></td>
-					<td data-th-text="${registroTesteo.unidadHabitacional.barrio.nombre}"></td>
+					<td
+						data-th-text="${registroTesteo.unidadHabitacional.barrio.nombre}"></td>
+					<td><a class="btn btn-success btn-sm text-white "
+						th:href="@{'/registroTesteo/detalle/{id}'(id=${registroTesteo.id})}">
+							Detalle </a></td>
 				</tr>
 			</tbody>
 		</table>
+	</div>
+	<div class="footer">
+		<p>Trabajo Practico Final-Programación Visual-2020</p>
 	</div>
 </body>
 </html>
