@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.testeos.model;
 
+//import java.util.HashSet;
+//import java.util.Set;
+
 import javax.persistence.*;
 
 import com.sun.istack.NotNull;
@@ -9,8 +12,11 @@ import ar.edu.unju.fi.enumerado.TipoUsuarioEnumerado;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
+	
+	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Column(name="usuario_ID")
 	private Long id;
 	@NotNull	
 	@Column(name = "nombre_usuario", unique=true)
@@ -28,7 +34,16 @@ public class Usuario {
 	@Enumerated(EnumType.STRING) // Toma el valor del enumerado y lo guarda en la columna de la tabla.
 	@Column(name = "tipo_usuario")
 	private TipoUsuarioEnumerado tipoUsuario;
+	
+	//AGREGE SU SET Y GET NOCE SI SEA CORRECTO ??????
+	//@OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
+	//@Column(name="registro_testeo_ID")
+	//private Set<RegistroTesteo> registroTesteo = new HashSet<>();
 
+	
+	
+
+	//======================DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 	/**
 	 * Constructor sin parametros.
 	 */
@@ -57,6 +72,7 @@ public class Usuario {
 		this.tipoUsuario = tipoUsuario;
 	}
 
+	//======================================GET/SET===========================================
 	/**
 	 * @return the id
 	 */
@@ -140,7 +156,10 @@ public class Usuario {
 	public void setTipoUsuario(TipoUsuarioEnumerado tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+	
+	
 
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CADA METODO==============================
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombreUsuario=" + nombreUsuario + ", password=" + password + ", nombreReal="

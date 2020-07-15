@@ -1,19 +1,30 @@
 package ar.edu.unju.fi.testeos.model;
 
+//import java.util.HashSet;
+//import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "unidad_habitacional")
 public class UnidadHabitacional {
-
+    
+	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "direccion")
 	private String direccion;
-	@ManyToOne // Indica la relacion muchos a uno entre unidadHabitacional y barrio.
+	
+	@ManyToOne  //Indica la relacion muchos a uno entre unidadHabitacional y barrio.
 	private Barrio barrio;
+	
+	//@OneToMany
+	//private Set<RegistroTesteo> registroTesteo= new HashSet<>();
+    
+	
 
+	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
 	/**
 	 * Constructor con parametros.
 	 * 
@@ -34,6 +45,7 @@ public class UnidadHabitacional {
 	public UnidadHabitacional() {
 	}
 
+	//======================================GET/SET===========================================
 	/**
 	 * @return the id
 	 */
@@ -75,7 +87,10 @@ public class UnidadHabitacional {
 	public void setBarrio(Barrio barrio) {
 		this.barrio = barrio;
 	}
+	
+	
 
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CADA METODO==============================
 	@Override
 	public String toString() {
 		return "UnidadHabitacional [id=" + id + ", direccion=" + direccion + ", barrio=" + barrio + "]";

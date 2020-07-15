@@ -1,18 +1,25 @@
 package ar.edu.unju.fi.testeos.model;
 
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "registro_persona_testeada")
 public class RegistroPersonaTesteada {
+	
+	//=======================DEFINICION DE VARIABLES MIEMBROS==================================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
 	private RegistroTesteo registroTesteo;
+	
 	@ManyToOne
-	private PersonaTesteada personaTesteada;
+	private PersonaTesteada personaTesteadas;                                //<PersonaTesteada> personaTesteada =new HashSet<>();
+	
 
+	//==============DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
+	
 	/**
 	 * Constructor sin parametros
 	 */
@@ -27,12 +34,14 @@ public class RegistroPersonaTesteada {
 	 * @param registroTesteo
 	 * @param personaTesteada
 	 */
-	public RegistroPersonaTesteada(Long id, RegistroTesteo registroTesteo, PersonaTesteada personaTesteada) {
+	public RegistroPersonaTesteada(Long id, RegistroTesteo registroTesteo, PersonaTesteada personaTesteadas) {
 		super();
 		this.id = id;
 		this.registroTesteo = registroTesteo;
-		this.personaTesteada = personaTesteada;
+		this.personaTesteadas = personaTesteadas;
 	}
+	
+	//=========================GET/SET==============================
 
 	/**
 	 * @return the id
@@ -63,23 +72,27 @@ public class RegistroPersonaTesteada {
 	}
 
 	/**
-	 * @return the personaTesteada
+	 * @return the personaTesteadas
 	 */
-	public PersonaTesteada getPersonaTesteada() {
-		return personaTesteada;
+	public PersonaTesteada getPersonaTesteadas() {
+		return personaTesteadas;
 	}
 
 	/**
-	 * @param personaTesteada the personaTesteada to set
+	 * @param personaTesteadas the personaTesteadas to set
 	 */
-	public void setPersonaTesteada(PersonaTesteada personaTesteada) {
-		this.personaTesteada = personaTesteada;
+	public void setPersonaTesteadas(PersonaTesteada personaTesteadas) {
+		this.personaTesteadas = personaTesteadas;
 	}
-
+	
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CDA METODO==============================
+    
 	@Override
 	public String toString() {
 		return "RegistroPersonaTesteada [id=" + id + ", registroTesteo=" + registroTesteo + ", personaTesteada="
-				+ personaTesteada + "]";
+				+ personaTesteadas + "]";
 	}
+
+	
 
 }

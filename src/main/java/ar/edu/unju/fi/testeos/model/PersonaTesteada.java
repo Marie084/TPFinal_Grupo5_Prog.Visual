@@ -1,21 +1,40 @@
 package ar.edu.unju.fi.testeos.model;
 
+
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "persona_testeada")
 public class PersonaTesteada {
+	
+	//============================DEFINICION DE VARIABLES MIEMBROS==================================
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Column(name="per_testeada_ID")
 	private Long id;
+	
 	@Column(name = "documento")
 	private String documento;
+	
 	@Column(name = "apellido")
 	private String apellido;
+	
 	@Column(name = "nombre")
 	private String nombre;
+	
 	@Column(name = "resultado_testeo")
 	private Boolean resultadoTesteo;
+	
+	//mappedBy ="personaTesteadas" : me permite
+	//@OneToMany(mappedBy ="personaTesteadas" , fetch = FetchType.LAZY)
+	//@Column(name="reg_per_testeada_ID") //dentro pudo agregar  mappedby="personaTesteada": solo me gusta acceder a las marcas  private set<regPERSONATesteada> PERSONASregistradastesteadas= new hashset<>()
+	//private Set<RegistroPersonaTesteada> registroPersonaTesteada = new HashSet<>();
+	
+	//=======================DEFINICION DE CONSTRUCTORES CON/SIN PARAMETROS===========================
+
+	
 
 	/**
 	 * Constructor sin parametros
@@ -42,6 +61,8 @@ public class PersonaTesteada {
 		this.nombre = nombre;
 		this.resultadoTesteo = resultadoTesteo;
 	}
+	
+	//====================================GET/SET===========================================
 
 	/**
 	 * @return the id
@@ -112,6 +133,10 @@ public class PersonaTesteada {
 	public void setResultadoTesteo(Boolean resultadoTesteo) {
 		this.resultadoTesteo = resultadoTesteo;
 	}
+	
+	
+	
+	//=========================VERIFICACION DE COMO ESTA ANDANDO CDA METODO==============================
 
 	@Override
 	public String toString() {
