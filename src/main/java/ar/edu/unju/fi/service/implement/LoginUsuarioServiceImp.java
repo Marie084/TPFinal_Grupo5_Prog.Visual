@@ -15,6 +15,14 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.repository.UsuarioRepository;
 import ar.edu.unju.fi.testeos.model.Usuario;
 
+
+
+/**
+ * Implementa UserDetailService
+ * Esta clase guardara un usuario ,que servira para la autenticacion
+ * @autor maximiliano 
+ **/
+
 @Service
 public class LoginUsuarioServiceImp implements UserDetailsService{
 
